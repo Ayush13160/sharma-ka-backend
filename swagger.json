@@ -1,0 +1,43 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Contract Analysis API",
+    "description": "Analyze employment contracts against Indian law",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "responses": {
+          "200": {
+            "description": "Backend is running"
+          }
+        }
+      }
+    },
+    "/analyze-contract": {
+      "post": {
+        "summary": "Analyze a contract PDF/DOCX",
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "type": "file",
+            "required": true,
+            "description": "Contract file (PDF/DOCX)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contract analysis result"
+          }
+        }
+      }
+    }
+  }
+}
